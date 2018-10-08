@@ -248,10 +248,23 @@ namespace RCS620S_Net
             {
                 if (Receiver.Receive() == Define.OK)
                 {
-                    if (Receiver.ResponseData[1] != (byte)SubResponse.InListPassiveTarget)
+                    if (Receiver.ResponseData[1] != (byte)SubResponse.InListPassiveTarget ||
+                        Receiver.ResponseData[2] != 0x01 ||
+                        Receiver.ResponseData[3] != 0x01 ||
+                        Receiver.ResponseData[4] != 0x12 ||
+                        Receiver.ResponseData[5] != 0x01 )
                     {
                         return Define.ERROR;
                     }
+                    var text = "";
+                    foreach (var elm in Receiver.ResponseData)
+                    {
+                        text += elm.ToString("x2") + " ";
+                    }
+
+                    Console.WriteLine($"ReadFelica res:{text}");
+
+
                     var idm = Receiver.ResponseData.Skip(4).Take(8);
                     var pmm = Receiver.ResponseData.Skip(12).Take(8);
                     this.IDm = string.Empty;
@@ -277,6 +290,7 @@ namespace RCS620S_Net
         }
         public int ReadMIFARE()
         {
+            Receiver.ResponseData?.Initialize();
             var command = SubCommand.InListPassiveTarget;
             // パラメータ設定
             var parameter = new byte[2];
@@ -287,6 +301,13 @@ namespace RCS620S_Net
             {
                 if (Receiver.Receive() == Define.OK)
                 {
+                    var text = "";
+                    foreach(var elm in Receiver.ResponseData)
+                    {
+                        text += elm.ToString("x2") + " ";
+                    }
+                
+                    Console.WriteLine($"ReadMIFARE res:{text}");
                     if (Receiver.ResponseData[1] != (byte)SubResponse.InListPassiveTarget ||
                         Receiver.ResponseData[2] != 0x01 ||
                         Receiver.ResponseData[3] != 0x01 ||

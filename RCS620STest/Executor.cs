@@ -29,8 +29,15 @@ namespace RCS620STest
                 //if(rcs.ReadFelica() == Define.OK)
                 if (rcs.ReadMIFARE() == Define.OK)
                 {
-                    if(rcs.IDm != string.Empty) Console.WriteLine(rcs.IDm);
+                    //if(rcs.IDm != string.Empty)
+                        Console.WriteLine(rcs.IDm);
+                    // TODO 同じカードを置きっぱなしにすると、1回検出無しを挟む。Felicaでは連続検知できる。また、2枚置きすると連続して交互に検知する。この挙動の原因を調査する。
                 }
+                else
+                {
+                    Console.WriteLine("no exist");
+                }
+                
                 System.Threading.Thread.Sleep(50);
             };
         }
