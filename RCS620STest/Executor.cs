@@ -20,10 +20,10 @@ namespace RCS620STest
             rcs = new RCS620S(sp);
 
             var ret = rcs.GetFirmWareVersion();
-            Console.WriteLine($"ret:{ret} send.");
+            //Console.WriteLine($"ret:{ret} send.");
 
             var hoge = rcs.Initialize();
-            Console.WriteLine($"hoge:{hoge} initialize end.");
+            //Console.WriteLine($"hoge:{hoge} initialize end.");
 
             while (true) {
                 //if(rcs.ReadFelica() == Define.OK)

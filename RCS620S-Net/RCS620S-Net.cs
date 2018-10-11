@@ -262,7 +262,7 @@ namespace RCS620S_Net
                         text += elm.ToString("x2") + " ";
                     }
 
-                    Console.WriteLine($"ReadFelica res:{text}");
+                    //Console.WriteLine($"ReadFelica res:{text}");
 
 
                     var idm = Receiver.ResponseData.Skip(4).Take(8);
@@ -307,7 +307,7 @@ namespace RCS620S_Net
                         text += elm.ToString("x2") + " ";
                     }
                 
-                    Console.WriteLine($"ReadMIFARE res:{text}");
+                    //Console.WriteLine($"ReadMIFARE res:{text}");
                     if (Receiver.ResponseData[1] != (byte)SubResponse.InListPassiveTarget ||
                         Receiver.ResponseData[2] != 0x01 ||
                         Receiver.ResponseData[3] != 0x01 ||
