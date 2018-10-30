@@ -288,6 +288,10 @@ namespace RCS620S_Net
             }
             return Define.ERROR;
         }
+        /// <summary>
+        /// MIFARE TypeA読み出し
+        /// </summary>
+        /// <returns>UID</returns>
         public int ReadMIFARE()
         {
             Receiver.ResponseData?.Initialize();
@@ -315,8 +319,8 @@ namespace RCS620S_Net
                     {
                         return Define.ERROR;
                     }
-                    var idmLength = Receiver.ResponseData[5];
-                    var idm = Receiver.ResponseData.Skip(6).Take(idmLength);
+                    var idmLength = Receiver.ResponseData[7];
+                    var idm = Receiver.ResponseData.Skip(8).Take(idmLength);
                     this.IDm = string.Empty;
                     this.PMm = string.Empty;
                     foreach (var elm in idm)

@@ -16,7 +16,7 @@ namespace RCS620STest
         public void Execute()
         {
             //sp = new SerialPort("/dev/ttyAMA0", 115200, Parity.None, 8, StopBits.One);
-            sp = new SerialPort("COM8", 115200, Parity.None, 8, StopBits.One);
+            sp = new SerialPort("COM9", 115200, Parity.None, 8, StopBits.One);
             rcs = new RCS620S(sp);
 
             var ret = rcs.GetFirmWareVersion();
