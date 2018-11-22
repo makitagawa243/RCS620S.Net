@@ -265,8 +265,8 @@ namespace RCS620S_Net
                     //Console.WriteLine($"ReadFelica res:{text}");
 
 
-                    var idm = Receiver.ResponseData.Skip(4).Take(8);
-                    var pmm = Receiver.ResponseData.Skip(12).Take(8);
+                    var idm = Receiver.ResponseData.Skip(6).Take(8);
+                    var pmm = Receiver.ResponseData.Skip(14).Take(8);
                     this.IDm = string.Empty;
                     this.PMm = string.Empty;
                     foreach (var elm in idm)
